@@ -1,6 +1,7 @@
 package com.bamappli.contactsave;
 
 import DAO.UtilisateurDAO;
+import Service.UtilisateurService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,6 +12,8 @@ import java.io.IOException;
 
 @WebServlet(name = "ConnexionServlet", value = "/connexion")
 public class ConnexionServlet extends HttpServlet {
+    private UtilisateurService utilisateurService = new UtilisateurService();
+
     @Override
     public void init() throws ServletException {
         System.out.println("Bienvenue dans Connexion Servlet");
@@ -18,13 +21,21 @@ public class ConnexionServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Bienvenue dans Connexion Servlet");
-        UtilisateurDAO a = new UtilisateurDAO();
-        boolean b = a.inscription("fakoro88@gmail.com", "f23124568");
-        System.out.println(b);
-
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
-
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String action = req.getParameter("action");
+        if ("login".equals(action)) {
+            String email = req.getParameter("email");
+            String motDePasse = req.getParameter("motDePasse");
+            String uid = utilisateurService.connexion(req, email, motDePasse);
+            if (!uid.equals("-1") && !uid.equals("-2") && !uid.equals("-3")) {
+                resp.getWriter().write("Connexion réussie, UID : " + uid);
+            } else {
+                resp.getWriter().write("Échec de la connexion");
+            }
+        } else if ("logout".equals(action)) {
+            utilisateurService.deconnexion(req);
+            resp.getWriter().write("Déconnexion réussie");
+        }
     }
+
 }

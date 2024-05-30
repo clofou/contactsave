@@ -1,6 +1,7 @@
 package DAO;
 
 import Models.Contacts;
+import Models.Utilisateur;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class UtilisateurDAO implements IUtilisateurDAO{
@@ -104,6 +106,51 @@ public class UtilisateurDAO implements IUtilisateurDAO{
             e.printStackTrace();
             return false;
         }
+    }
+
+    public Utilisateur getUserByUid(String uid) {
+        String query = "SELECT uid, prenom, nom, email FROM utilisateurs WHERE uid = ?";
+        try (Connection conn = Connexion.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, uid);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return new Utilisateur(
+                        rs.getString("uid"),
+                        rs.getString("prenom"),
+                        rs.getString("nom"),
+                        rs.getString("email"),
+                        null
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<Contacts> getContactsByUid(String uid) {
+        String query = "SELECT * FROM Contacts WHERE uidUtilisateur = ?";
+        List<Contacts> contactsList = new ArrayList<>();
+        try (Connection conn = Connexion.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, uid);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Contacts contact = new Contacts(
+                        rs.getInt("id"),
+                        rs.getString("nomContact"),
+                        rs.getString("adresse"),
+                        rs.getString("emailPersonnel"),
+                        rs.getString("emailProfessionnel"),
+                        rs.getString("competenceFavorite")
+                );
+                contactsList.add(contact);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return contactsList;
     }
 
     private boolean contactExists(Contacts contact, String uid) throws SQLException {
