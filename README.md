@@ -10,6 +10,7 @@ de visualiser la liste de ses contacts, chaque apprenants à plusieurs Attributs
 - [Installation](#installation)
 - [Configuration de la Base de Données](#configuration-de-la-base-de-données)
 - [Technologies Utilisées](#technologies-utilisées)
+- [Lien Figma et Diagrammes UML](#figma)
 
 ## Description
 
@@ -56,3 +57,7 @@ C'est mieux d'utiliser IntelliJ
 - JDBC
 - MySQL
 - Maven
+
+### Lien Figma et Diagrammes UML
+Lien Figma: [Cliquez Sur le lien](https://www.figma.com/design/SpiHZVftGRcIfvZQ7iL3Uo/Untitled?node-id=0-1&t=n8ZPxuwAzcevuAy5-1)
+Lien Des Diagrammes UML: [Cliquez Sur le lien](https://drive.google.com/file/d/1Hc5gYTC8KNCKffwTglRnGoI9PLRYAntk/view?usp=sharing)
