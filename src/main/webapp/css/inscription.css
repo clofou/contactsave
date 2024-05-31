@@ -1,6 +1,7 @@
 form{
     display: flex;
     flex-direction: column;
+    margin: 30px;
     height: 100vh;
     justify-content: space-between;
 }
@@ -54,4 +55,13 @@ input.button2{
     left: 35px;
     right: 35px;
     height: 45px;
+}
+
+.term-compte{
+    display: flex;
+    justify-content: space-between;
+}
+
+.compte{
+    text-align: right;
 }

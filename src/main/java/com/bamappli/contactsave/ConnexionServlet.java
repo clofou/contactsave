@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "ConnexionServlet", value = "/connexion")
+@WebServlet(name = "ConnexionServlet", value = "/connexionI")
 public class ConnexionServlet extends HttpServlet {
     private UtilisateurService utilisateurService = new UtilisateurService();
 
