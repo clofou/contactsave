@@ -36,7 +36,7 @@ C'est mieux d'utiliser IntelliJ
 1. Clonez le dépôt :
 
    ```sh
-   git clone [https://github.com/votre-utilisateur/votre-depot.git](https://github.com/clofou/contactsave.git)
+   git clone https://github.com/clofou/contactsave.git
    cd contactsave
 
 2. Configurez la base de données (voir sqlCodeToCreateDatabase.sql dans les dossiers du projet).
