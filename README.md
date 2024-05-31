@@ -10,6 +10,7 @@ de visualiser la liste de ses contacts, chaque apprenants à plusieurs Attributs
 - [Installation](#installation)
 - [Configuration de la Base de Données](#configuration-de-la-base-de-données)
 - [Technologies Utilisées](#technologies-utilisées)
+- [Lien Figma et Diagrammes UML](#figma-et-Diagrammes-UML)
 
 ## Description
 
@@ -36,18 +37,27 @@ C'est mieux d'utiliser IntelliJ
 1. Clonez le dépôt :
 
    ```sh
-   git clone https://github.com/votre-utilisateur/votre-depot.git
-   cd votre-depot
+   git clone https://github.com/clofou/contactsave.git
+   cd contactsave
 
 2. Configurez la base de données (voir sqlCodeToCreateDatabase.sql dans les dossiers du projet).
-3. Installez les dépendances Maven : mvn clean install
-4. Configurez les informations de connexion dans le fichier Connexion.java :
+3. Installez les dépendances Maven :
+   ```sh
+   mvn clean install
    
-    private static final String URL = "jdbc:mysql://localhost:3306/gestion_contacts";
-    private static final String USER = "utilisateur";
-    private static final String PASSWORD = "mot_de_passe";
-### technologies-utilisées
-Java
-JDBC
-MySQL
-Maven
+5. Configurez les informations de connexion dans le fichier Connexion.java :
+   
+   ```sh
+   private static final String URL = "jdbc:mysql://localhost:3306/contactsave";
+   private static final String USER = "utilisateur";
+   private static final String PASSWORD = "mot_de_passe";
+   
+### Technologies-utilisées
+- Java
+- JDBC
+- MySQL
+- Maven
+
+### Figma et Diagrammes UML
+- Lien Figma: [Cliquez Sur le lien](https://www.figma.com/design/SpiHZVftGRcIfvZQ7iL3Uo/Untitled?node-id=0-1&t=n8ZPxuwAzcevuAy5-1)
+- Lien Des Diagrammes UML: [Cliquez Sur le lien](https://drive.google.com/file/d/1Hc5gYTC8KNCKffwTglRnGoI9PLRYAntk/view?usp=sharing) Telecharger le fichier pour bien visualuser
