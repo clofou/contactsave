@@ -1,0 +1,69 @@
+header{
+    width: 100%;
+    height: 150px;
+    display: flex;
+}
+
+header div{
+    display: inline-block;
+    
+}
+
+.profil{
+    display: flex;
+    gap: 6px;
+    width: 35vw;
+    color: white;
+    border-right: 1px solid rgba(224, 218, 209, 0.897);
+    border-bottom: 1px solid rgba(224, 218, 209, 0.897);
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 55px;
+    padding-right: 6px;
+}
+
+
+.profilimg{
+    
+    background-color: rgba(224, 218, 209, 0.897);
+    border-radius: 10px;
+}
+
+.mainHeader{
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.champ{
+    display: flex;
+    position: relative;
+}
+
+.champ img{
+    position: absolute;
+    height: 30px;
+    top: 4px;
+    left: 10px;
+}
+
+.champ input{
+    height: 35px;
+    width: 200px;
+    font-size: 15px;
+    margin-bottom: 20px;
+    padding-left: 50px;
+}
+
+.actionButton img{
+    margin-right: 20px;
+}
+
+.menu{
+    width: 35vw;
+}

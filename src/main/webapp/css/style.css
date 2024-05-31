@@ -1,3 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
 body{
-    background-color: blue;
+    font-family: "Inter", sans-serif;
+}
+
+.bgP{
+    background-color: #343434;
+}
+
+.colorP{
+    color: #BF211E;
+}
+
+.colorS{
+    color: #F9DC5C;
+}
+
+.button1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    font-weight: bold;
+    padding: 10px 30px;
+    color: white;
+    border: 0px;
+    background-color: #BF211E;
+    box-shadow: 1px 1px 5px 1px #BF211E;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.button1:hover{
+    border: 1px solid #BF211E;
+    background-color: #BF211E00;
+    color: #BF211E;
+}
+
+.button2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    font-weight: bold;
+    padding: 10px 30px;
+    border: 1px solid #BF211E;
+    background-color: #BF211E00;
+    box-shadow: 1px 1px 5px 1px #BF211E;
+    transition: 0.2s;
+    color: #BF211E;
+    cursor: pointer;
+}
+
+.button2:hover{
+    scale: 1.02;
+}
+
+a{
+    text-decoration: none;
 }

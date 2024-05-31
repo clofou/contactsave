@@ -1,0 +1,57 @@
+form{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+.image{
+    text-align: center;
+}
+
+.champ{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.champ label{
+    font-size: large;
+    font-weight: bold;
+}
+
+.champ img{
+    position: absolute;
+    height: 40px;
+    top: 28px;
+    left: 10px;
+}
+
+.saisie{
+    justify-self: center;
+    margin-top: 20px;
+}
+
+.champ input{
+    height: 50px;
+    font-size: 34px;
+    margin-bottom: 20px;
+    padding-left: 70px;
+}
+
+input.button1{
+    position: absolute;
+    bottom: 20px;
+    left: 35px;
+    right: 35px;
+    height: 45px;
+}
+
+
+input.button2{
+    position: absolute;
+    bottom: 20px;
+    left: 35px;
+    right: 35px;
+    height: 45px;
+}
