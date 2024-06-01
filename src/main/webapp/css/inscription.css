@@ -1,9 +1,12 @@
 form{
     display: flex;
     flex-direction: column;
+    padding: 45px;
     margin: 30px;
     height: 100vh;
     justify-content: space-between;
+    background-color: white;
+    box-shadow: 1px 1px 3px 1px gray;
 }
 
 .image{

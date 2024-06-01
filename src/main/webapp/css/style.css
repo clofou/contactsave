@@ -7,6 +7,7 @@
 
 body{
     font-family: "Inter", sans-serif;
+    background-color: #d4d2d2;
 }
 
 .bgP{
@@ -53,8 +54,14 @@ body{
     background-color: #BF211E00;
     box-shadow: 1px 1px 5px 1px #BF211E;
     transition: 0.2s;
+    margin: 50px;
     color: #BF211E;
     cursor: pointer;
+}
+
+.error{
+    color: red;
+    text-shadow: 1px 1px 1px darkred;
 }
 
 .button2:hover{

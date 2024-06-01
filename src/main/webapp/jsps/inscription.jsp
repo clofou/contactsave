@@ -1,3 +1,10 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String errorMessage = (String) request.getAttribute("errorMessage");
+    if (errorMessage == null){
+        errorMessage="";
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +16,7 @@
 </head>
 <body>
     <div class="image"><img src="assets/images/inscription.png" alt=""></div>
-    <form action="inscription">
+    <form action="inscription-traitement" method="post">
         <div class="saisie">
             <div class="champ">
                 <label for="email">Email</label>
@@ -32,13 +39,14 @@
             <div class="term-compte">
                 <div class="term">
                     <input type="checkbox" name="terms" id="terms">
-                    <label for="#">Acceptez les <a href="terms">Les Termes et Conditions d'utilisations.</a></label>
+                    <label for="terms">Acceptez les <a href="cgu.html">Les Termes et Conditions d'utilisations.</a></label>
                 </div>
                 <div>
                     Vous avez déjà un compte ? <a href="connexion">Connectez-vous</a>
                 </div>
+                <br>
             </div>
-
+            <div class="error"><%=errorMessage%></div>
         </div>
 
         <input type="submit" class="button1" value="S'INSCRIRE">
