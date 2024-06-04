@@ -4,7 +4,6 @@ import DAO.UtilisateurDAO;
 import Models.Contacts;
 import Models.Utilisateur;
 import Utils.SessionManager;
-import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,32 +11,36 @@ import java.util.List;
 public class UtilisateurService {
     private final UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
 
-    public String connexion(HttpServletRequest request, String email, String motDePasse) {
+    public String connexion(String email, String motDePasse) {
         String uid = utilisateurDAO.connexion(email, motDePasse);
         if (!uid.equals("-1") && !uid.equals("-2") && !uid.equals("-3")) {
-            SessionManager.createSession(request, uid);
+            SessionManager.createSession(uid);
             return uid;
         }
         return uid;
     }
 
-    public void deconnexion(HttpServletRequest request) {
-        SessionManager.destroySession(request);
+    public void deconnecter() {
+        SessionManager.destroySession();
     }
 
-    public Utilisateur getUserInfo(HttpServletRequest request) {
-        String uid = SessionManager.getSessionUserUid(request);
+    public Utilisateur getUserInfo() {
+        String uid = SessionManager.getSessionUserUid();
         if (uid != null) {
-            return utilisateurDAO.getUserByUid(uid);
+            return utilisateurDAO.getUtilisateurByUid(uid);
         }
         return null;
     }
 
-    public List<Contacts> getUserContacts(HttpServletRequest request) {
-        String uid = SessionManager.getSessionUserUid(request);
+    public List<Contacts> getUserContacts() {
+        String uid = SessionManager.getSessionUserUid();
         if (uid != null) {
-            return utilisateurDAO.getContactsByUid(uid);
+            return utilisateurDAO.getContactsByUtilisateur(uid);
         }
         return new ArrayList<>();
+    }
+
+    public void supprimerContact(int contactId) {
+        utilisateurDAO.supprimerContact(contactId);
     }
 }

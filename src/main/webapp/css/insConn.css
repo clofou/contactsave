@@ -3,7 +3,7 @@ form{
     flex-direction: column;
     padding: 45px;
     margin: 30px;
-    height: 100vh;
+    height: 500px;
     justify-content: space-between;
     background-color: white;
     box-shadow: 1px 1px 3px 1px gray;

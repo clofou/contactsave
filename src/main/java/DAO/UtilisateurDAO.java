@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class UtilisateurDAO implements IUtilisateurDAO{
@@ -108,10 +107,23 @@ public class UtilisateurDAO implements IUtilisateurDAO{
         }
     }
 
-    public Utilisateur getUserByUid(String uid) {
-        String query = "SELECT uid, prenom, nom, email FROM utilisateurs WHERE uid = ?";
-        try (Connection conn = Connexion.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
+    @Override
+    public void supprimerContact(int contactId) {
+        try {
+            String query = "DELETE FROM Contacts WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, contactId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Utilisateur getUtilisateurByUid(String uid) {
+        String query = "SELECT uid, prenom, nom, email, photoUrl FROM utilisateurs WHERE uid = ?";
+        try (
+             PreparedStatement stmt = Connexion.getConnection().prepareStatement(query)) {
             stmt.setString(1, uid);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -120,7 +132,8 @@ public class UtilisateurDAO implements IUtilisateurDAO{
                         rs.getString("prenom"),
                         rs.getString("nom"),
                         rs.getString("email"),
-                        null
+                        null,
+                        rs.getString("photoUrl")
                 );
             }
         } catch (SQLException e) {
@@ -129,11 +142,26 @@ public class UtilisateurDAO implements IUtilisateurDAO{
         return null;
     }
 
-    public List<Contacts> getContactsByUid(String uid) {
+    public static boolean isEmailExist(String email) {
+        String query = "SELECT email FROM utilisateurs WHERE email = ?";
+        try (PreparedStatement stmt = Connexion.getConnection().prepareStatement(query)) {
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public ArrayList<Contacts> getContactsByUtilisateur(String uid) {
         String query = "SELECT * FROM Contacts WHERE uidUtilisateur = ?";
-        List<Contacts> contactsList = new ArrayList<>();
-        try (Connection conn = Connexion.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
+        ArrayList<Contacts> contactsList = new ArrayList<>();
+        try (
+             PreparedStatement stmt = Connexion.getConnection().prepareStatement(query)) {
             stmt.setString(1, uid);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -143,7 +171,8 @@ public class UtilisateurDAO implements IUtilisateurDAO{
                         rs.getString("adresse"),
                         rs.getString("emailPersonnel"),
                         rs.getString("emailProfessionnel"),
-                        rs.getString("competenceFavorite")
+                        rs.getString("competenceFavorite"),
+                        rs.getString("photoUrl")
                 );
                 contactsList.add(contact);
             }
@@ -152,6 +181,7 @@ public class UtilisateurDAO implements IUtilisateurDAO{
         }
         return contactsList;
     }
+
 
     private boolean contactExists(Contacts contact, String uid) throws SQLException {
         String query = "SELECT id FROM Contacts WHERE emailPersonnel = ? AND uidUtilisateur = ?";

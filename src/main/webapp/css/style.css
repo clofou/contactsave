@@ -11,7 +11,7 @@ body{
 }
 
 .bgP{
-    background-color: #343434;
+    background-color: #3A3434;
 }
 
 .colorP{
@@ -22,6 +22,10 @@ body{
     color: #F9DC5C;
 }
 
+#bgWhite{
+    background-color: #FFFFFF;
+}
+
 .button1{
     display: flex;
     align-items: center;
@@ -30,7 +34,7 @@ body{
     font-weight: bold;
     padding: 10px 30px;
     color: white;
-    border: 0px;
+    border: 0;
     background-color: #BF211E;
     box-shadow: 1px 1px 5px 1px #BF211E;
     transition: 0.2s;
@@ -61,7 +65,7 @@ body{
 
 .error{
     color: red;
-    text-shadow: 1px 1px 1px darkred;
+    margin-top: 16px;
 }
 
 .button2:hover{
@@ -70,4 +74,14 @@ body{
 
 a{
     text-decoration: none;
+}
+
+button, input[type="submit"], input[type="reset"] {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
 }

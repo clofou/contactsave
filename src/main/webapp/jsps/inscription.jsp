@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <%
     String errorMessage = (String) request.getAttribute("errorMessage");
     if (errorMessage == null){
@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ContactSave | Inscription</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/inscription.css">
+    <link rel="stylesheet" href="css/insConn.css">
 </head>
 <body>
     <div class="image"><img src="assets/images/inscription.png" alt=""></div>
@@ -21,7 +21,7 @@
             <div class="champ">
                 <label for="email">Email</label>
                 <img src="assets/images/entypo_email.png" alt="icône du mail">
-                <input type="text" name="email" id="email">
+                <input type="email" name="email" id="email">
             </div>
     
             <div class="champ">
@@ -39,17 +39,33 @@
             <div class="term-compte">
                 <div class="term">
                     <input type="checkbox" name="terms" id="terms">
-                    <label for="terms">Acceptez les <a href="cgu.html">Les Termes et Conditions d'utilisations.</a></label>
+                    <label for="terms">Acceptez les <a href="cgu.html" target="_blank">Les Termes et Conditions d'utilisations.</a></label>
                 </div>
                 <div>
                     Vous avez déjà un compte ? <a href="connexion">Connectez-vous</a>
                 </div>
-                <br>
             </div>
             <div class="error"><%=errorMessage%></div>
         </div>
 
-        <input type="submit" class="button1" value="S'INSCRIRE">
+        <button id="submitButton" disabled>S'INSCRIRE</button>
     </form>
+
+    <script>
+        let errorMes = document.querySelector(".error")
+        if (errorMes.innerText === ""){
+            errorMes.setAttribute("display", "none")
+        }
+        let button = document.getElementById('submitButton');
+        document.getElementById('terms').addEventListener('change', function () {
+             button.disabled = !this.checked;
+
+            if(!button.disabled){
+                button.setAttribute("class", "button1")
+            } else{
+                button.removeAttribute("class");
+            }
+        });
+    </script>
 </body>
 </html>

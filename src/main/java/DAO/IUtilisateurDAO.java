@@ -1,6 +1,7 @@
 package DAO;
 
 import Models.Contacts;
+import Models.Utilisateur;
 
 import java.util.ArrayList;
 
@@ -45,4 +46,8 @@ public interface IUtilisateurDAO {
      * @return boolean (Vrai si les contacts ont ete exporte avec succees, faux sinon)
      */
     boolean enregistrerContact(ArrayList<Contacts> contacts);
+    Utilisateur getUtilisateurByUid(String uid);
+    ArrayList<Contacts> getContactsByUtilisateur(String uid);
+
+    void supprimerContact(int contactId);
 }

@@ -2,6 +2,8 @@ package Utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class utils {
     public static String hashPassword(String password) throws NoSuchAlgorithmException {
@@ -16,5 +18,15 @@ public class utils {
 
     public static boolean verifyPassword(String password, String hashedPassword) throws NoSuchAlgorithmException {
         return hashPassword(password).equals(hashedPassword);
+    }
+
+    public static boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        if (email == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 }

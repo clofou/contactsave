@@ -1,29 +1,30 @@
 package Utils;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
+
+import java.time.LocalDateTime;
 
 public class SessionManager {
-    private static final int SESSION_TIMEOUT = 30 * 60; // Timeout en secondes (30 minutes)
 
-    public static void createSession(HttpServletRequest request, String uid) {
-        HttpSession session = request.getSession(true); // Crée une nouvelle session si elle n'existe pas
-        session.setMaxInactiveInterval(SESSION_TIMEOUT); // Définit le timeout de la session
-        session.setAttribute("userUid", uid);
+    public static void createSession(String uid) {
+        FileOperations.writeIntegerToFile("session.txt", uid);
+        DateTimeOperations.saveCurrentDateTime();
     }
 
-    public static void destroySession(HttpServletRequest request) {
-        HttpSession session = request.getSession(false); // Récupère la session existante, ne crée pas une nouvelle
-        if (session != null) {
-            session.invalidate();
-        }
+    public static void destroySession() {
+        FileOperations.writeIntegerToFile("session.txt", "");
     }
 
-    public static String getSessionUserUid(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            return (String) session.getAttribute("userUid");
+    public static String getSessionUserUid() {
+        LocalDateTime savedDateTime = DateTimeOperations.readSavedDateTime();
+        if(savedDateTime != null){
+            if (!DateTimeOperations.is15MinutesElapsed(savedDateTime)){
+                return FileOperations.readIntegerFromFile("session.txt");
+            }else{
+                return null;
+            }
+        } else{
+            return null;
         }
-        return null;
+
     }
 }

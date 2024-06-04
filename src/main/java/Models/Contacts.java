@@ -6,63 +6,74 @@ public class Contacts {
     private String adresse;
     private String emailPersonnel;
     private String emailProfessionnel;
-    private String CompetenceFavorite;
+    private String competenceFavorite;
+    private String photoUrl;
 
-    public Contacts(){}
-    public Contacts(int id, String nomContact, String adresse, String emailPersonnel, String emailProfessionnel, String competenceFavorite){
-        this.adresse = adresse;
-        this.CompetenceFavorite = competenceFavorite;
-        this.nomContact = nomContact;
+    public Contacts() {}
+
+    public Contacts(int id, String nomContact, String adresse, String emailPersonnel, String emailProfessionnel, String competenceFavorite, String photoUrl) {
         this.id = id;
+        this.nomContact = nomContact;
+        this.adresse = adresse;
         this.emailPersonnel = emailPersonnel;
         this.emailProfessionnel = emailProfessionnel;
-    }
-
-    public String getNomContact() {
-        return nomContact;
-    }
-
-    public String getAdresse() {
-        return adresse;
+        this.competenceFavorite = competenceFavorite;
+        this.photoUrl = photoUrl;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getCompetenceFavorite() {
-        return CompetenceFavorite;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getEmailPersonnel() {
-        return emailPersonnel;
+    public String getNomContact() {
+        return nomContact;
     }
 
-    public String getEmailProfessionnel() {
-        return emailProfessionnel;
+    public void setNomContact(String nomContact) {
+        this.nomContact = nomContact;
+    }
+
+    public String getAdresse() {
+        return adresse;
     }
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
     }
 
-    public void setCompetenceFavorite(String competenceFavorite) {
-        CompetenceFavorite = competenceFavorite;
+    public String getEmailPersonnel() {
+        return emailPersonnel;
     }
 
     public void setEmailPersonnel(String emailPersonnel) {
         this.emailPersonnel = emailPersonnel;
     }
 
+    public String getEmailProfessionnel() {
+        return emailProfessionnel;
+    }
+
     public void setEmailProfessionnel(String emailProfessionnel) {
         this.emailProfessionnel = emailProfessionnel;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getCompetenceFavorite() {
+        return competenceFavorite;
     }
 
-    public void setNomContact(String nomContact) {
-        this.nomContact = nomContact;
+    public void setCompetenceFavorite(String competenceFavorite) {
+        this.competenceFavorite = competenceFavorite;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 }

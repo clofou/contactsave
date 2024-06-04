@@ -16,16 +16,8 @@ public class RootServlet extends HttpServlet {
             req.getRequestDispatcher("jsps/inscription.jsp").forward(req, resp);
         }
         if (req.getServletPath().equals("/connexion")){
-            req.getRequestDispatcher("jsps/connexion.html").forward(req, resp);
+            req.getRequestDispatcher("jsps/connexion.jsp").forward(req, resp);
         }
 
-    }
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String email = req.getParameter("email");
-        String motDePasse = req.getParameter("motDePasse");
-        req.setAttribute("email", email);
-        req.setAttribute("motDePasse", motDePasse);
-        req.getRequestDispatcher("jsps/test.jsp").forward(req, resp);
     }
 }
