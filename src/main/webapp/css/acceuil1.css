@@ -5,6 +5,109 @@
 
 body{
     background-color: white;
+    overflow-x: hidden;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0 4px 6px;
+    transition: 0.4s;
+}
+#flou{
+    display: none;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+    #head1{
+        min-width: 500px;
+
+    }
+    #flou{
+        width: 100%;
+        display: block;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.51);
+        z-index: 2;
+        backdrop-filter: blur(4px);
+        transition: 0.2s;
+    }
+    *{
+        font-size: 16px;
+    }
+    .menu-toggle {
+        display: flex;
+        z-index: 4;
+    }
+
+    .actionButton img{
+        width: 45px;
+    }
+
+    .searchBar input{
+        height: 25px;
+        width: 100px;
+    }
+
+    .grid-item:nth-child(1) {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 60%;
+        height: 100vh;
+        background-color: #333;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: left 0.3s ease;
+        z-index: 3;
+    }
+
+    .grid-item:nth-child(2){
+        width: 100vw;
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    .grid-item:nth-child(1).active {
+        left: 0;
+
+    }
+
+    #flou{
+        position: absolute;
+        right: -100%;
+        top: 0;
+    }
+
+    #flou.active {
+        right: 0;
+    }
+    /* Ajout d'animation aux barres */
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    #head, .head{
+        border: 3px;
+    }
 }
 
 .grid{
@@ -130,9 +233,6 @@ body{
     left: 10px;
 }
 
-.actionButton{
-    width: 300px;
-}
 .actionButton img{
     margin: 0px 30px;
 }

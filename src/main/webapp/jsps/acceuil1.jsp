@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/acceuil1.css">
 </head>
 <body id="white">
+
 <div class="grid">
     <div class="grid-item">
         <div class="head" id="head">
@@ -53,6 +54,12 @@
     </div>
     <div class="grid-item">
         <div class="head" id="head1">
+            <div id="flou">h</div>
+            <div class="menu-toggle" id="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
             <div class="actionButton">
                 <img src="assets/images/ic_baseline-share.png" alt="Icône d'envoi">
                 <img src="assets/images/ph_export-bold.png" alt="Button D'exportation">
@@ -111,5 +118,22 @@
         </div>
     </div>
 </div>
+<script>
+    // script.js
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const flou = document.getElementById('flou');
+
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.querySelector(".grid-item:nth-child(1)");
+
+        menuToggle.addEventListener('click', function () {
+            menuToggle.classList.toggle('active');  // Ajout de cette ligne
+            navLinks.classList.toggle('active');
+            flou.classList.toggle('active');
+            //flou.style.display="block";
+        });
+    });
+</script>
 </body>
 </html>
