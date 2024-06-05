@@ -1,81 +1,84 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-*{
+/* Global Reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* Added box-sizing for better layout control */
 }
 
-body{
-    font-family: "Inter", sans-serif;
+/* Global Styles */
+body {
+    font-family: 'Inter', sans-serif;
     background-color: #d4d2d2;
 }
 
-.bgP{
+/* Utility Classes */
+.bgP {
     background-color: #3A3434;
 }
 
-.colorP{
+.colorP {
     color: #BF211E;
 }
 
-.colorS{
+.colorS {
     color: #F9DC5C;
 }
 
-#bgWhite{
+#bgWhite {
     background-color: #FFFFFF;
 }
 
-.button1{
+/* Button Styles */
+.button {
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 30px;
     font-weight: bold;
     padding: 10px 30px;
+    box-shadow: 1px 1px 5px 1px #BF211E;
+    transition: 0.2s;
+    cursor: pointer;
+    text-align: center;
+}
+
+.button1 {
+    background-color: #BF211E;
     color: white;
     border: 0;
-    background-color: #BF211E;
-    box-shadow: 1px 1px 5px 1px #BF211E;
-    transition: 0.2s;
-    cursor: pointer;
 }
 
-.button1:hover{
+.button1:hover {
     border: 1px solid #BF211E;
-    background-color: #BF211E00;
+    background-color: transparent;
     color: #BF211E;
 }
 
-.button2{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 30px;
-    font-weight: bold;
-    padding: 10px 30px;
+.button2 {
+    background-color: transparent;
+    color: #BF211E;
     border: 1px solid #BF211E;
-    background-color: #BF211E00;
-    box-shadow: 1px 1px 5px 1px #BF211E;
-    transition: 0.2s;
     margin: 50px;
-    color: #BF211E;
-    cursor: pointer;
 }
 
-.error{
+.button2:hover {
+    transform: scale(1.02);
+}
+
+/* Error Message */
+.error {
     color: red;
     margin-top: 16px;
 }
 
-.button2:hover{
-    scale: 1.02;
-}
-
-a{
+/* Links */
+a {
     text-decoration: none;
 }
 
+/* Form Elements */
 button, input[type="submit"], input[type="reset"] {
     background: none;
     color: inherit;
